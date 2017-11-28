@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Passion+One');
+
+body {
+    /*background: url(http://www.publicdomainpictures.net/pictures/20000/velka/winter-forest.jpg) no-repeat center bottom fixed;*/
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.main-div{
+
+    width: 600px;
+    height: 250px;
+
+    position:absolute; /*it can be fixed too*/
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+
+
+    overflow:auto;
+
+    background-color: lightgrey;
+    border-radius: 2em;
+    border: #ddd 7px solid;
+    opacity: 0.9;
+}
+
+.content {
+    width: 200px;
+    height: 510px;
+    background-color: blue;
+
+    position:absolute; /*it can be fixed too*/
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+
+    /*this to solve "the content will not be cut when the window is smaller than the content": */
+    max-width:100%;
+    max-height:100%;
+    overflow:auto;
+}
+
+.location h1{
+    margin: 5px auto;
+    padding: 0;
+    font-size: 5em;
+    font-family: 'Passion One', cursive;
+    color: white;
+    height: 95%;
+}
+
+.logo{
+    margin: 5px auto;
+    font-size: 5em;
+    font-family: 'Passion One', cursive;
+    color: white;
+    border-left: solid 4px white;
+    height: 95%;
+}
+
+img{
+    width: 50%;
+    height: auto;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.info {
+    color: white;
+    font-size: 1.5em;
+}
+
