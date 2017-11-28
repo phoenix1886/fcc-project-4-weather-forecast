@@ -1,6 +1,8 @@
 $(document).ready(function () {
     var latitude;
     var longitude;
+    var tempButton = document.getElementById('temp');
+
     function success(position) {
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
@@ -16,6 +18,7 @@ $(document).ready(function () {
         updateCity(response);
         updateWeatherLogo(response);
         updateBackgroundImage(response, extractTemperature(response));
+        tempButton.disabled = false;
     }
 
     function makeAjax(latitude, longitude) {
@@ -76,7 +79,7 @@ $(document).ready(function () {
 
     function updateTemperature(jsonResponse) {
         var tempElement = document.getElementById('temp');
-        tempElement.innerHTML = extractTemperature(jsonResponse)+'&deg;';
+        tempElement.innerHTML = extractTemperature(jsonResponse)+'&deg;C';
     }
 
     function updateHumidity(jsonResponse) {
@@ -115,6 +118,32 @@ $(document).ready(function () {
             currentBackgroundURL+ ')  no-repeat center bottom fixed';
 
     }
+
+    function celciusFahrenheitConverter(degrees) {
+        var re = /-*\d+\.*\d*/;
+        console.log('degree', degrees);
+        var temp = degrees.match(re)[0];
+
+        console.log('temp', temp);
+        if (/F$/.test(degrees)){
+            // console.log((temp - 32)*5/9);
+            temp = (temp - 32)*5/9;
+            temp = Math.round(temp * 100)/100;
+            return String(temp) + '&deg;' + 'C';
+        }
+        else {
+            // console.log(temp * 9 / 5 + 32);
+            temp = temp * 9 / 5 + 32;
+            temp = Math.round(temp * 100)/100;
+            return String(temp) + '&deg;' + 'F';
+        }
+    }
+
+    tempButton.addEventListener('click', function (event) {
+        var tempElement = document.getElementById('temp');
+        var currentTemp = tempElement.innerHTML;
+        tempElement.innerHTML = celciusFahrenheitConverter(currentTemp);
+    });
 
     navigator.geolocation.getCurrentPosition(success);
 

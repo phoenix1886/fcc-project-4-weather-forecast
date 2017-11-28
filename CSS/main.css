@@ -8,6 +8,15 @@ body {
 
 }
 
+button {
+    border-radius: 7px;
+    min-width: 75px;
+    background-color: #ddd;
+    border: 3px white solid;
+    color: white;
+    text-align: center;
+}
+
 .main-div{
 
     width: 600px;
